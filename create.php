@@ -129,7 +129,6 @@ if (isset($_POST['submit']) && $_POST['form-sub'] == 1) {
                     )";
 
             $insert = $mysqli->query($sql);
-
         } else {
 
 
@@ -219,14 +218,14 @@ if (isset($_POST['submit']) && $_POST['form-sub'] == 1) {
         <?php
         if ($error) {
             ?>
-            <div class="alert alert-danger">
-                <ul>
-                    <strong>
-                        <?php echo $error_msg; ?>
-                    </strong>
-                </ul>
-            </div>
-            <?php
+        <div class="alert alert-danger">
+            <ul>
+                <strong>
+                    <?php echo $error_msg; ?>
+                </strong>
+            </ul>
+        </div>
+        <?php
         }
         ?>
         <div class="card">
@@ -260,10 +259,9 @@ if (isset($_POST['submit']) && $_POST['form-sub'] == 1) {
                             </div>
 
                             <div class="col-sm-2">
-                                <input type="radio" name="gender" id="female" class="form-check-input" value="female"
-                                    <?php if ($form_gender == 'female') {
-                                        echo "checked";
-                                    } ?>>
+                                <input type="radio" name="gender" id="female" class="form-check-input" value="female" <?php if ($form_gender == 'female') {
+                                    echo "checked";
+                                } ?>>
                                 <label for="female">Female</label>
                             </div>
                         </div>
@@ -274,14 +272,15 @@ if (isset($_POST['submit']) && $_POST['form-sub'] == 1) {
                             <?php
                             foreach ($db_job_types as $key => $db_job_type) {
                                 ?>
-                                <div class="col-md-4 col-sm-12">
-                                    <input type="checkbox" name="job_type[]" id="job-<?php echo $db_job_type['id']; ?>"
-                                        value="<?php echo $db_job_type['id']; ?>" <?php if (in_array($db_job_type['id'], $job_types)) {
+                            <div class="col-md-4 col-sm-12">
+                                <input type="checkbox" name="job_type[]" id="job-<?php echo $db_job_type['id']; ?>"
+                                    value="<?php echo $db_job_type['id']; ?>" <?php if (in_array($db_job_type['id'], $job_types)) {
                                                echo "checked";
                                            } ?>>
-                                    <label for="job-<?php echo $db_job_type['id']; ?>"><?php echo $db_job_type['name']; ?></label>
-                                </div>
-                                <?php
+                                <label
+                                    for="job-<?php echo $db_job_type['id']; ?>"><?php echo $db_job_type['name']; ?></label>
+                            </div>
+                            <?php
                             }
                             ?>
 
@@ -304,12 +303,12 @@ if (isset($_POST['submit']) && $_POST['form-sub'] == 1) {
                             <?php
                             foreach ($db_countryName as $key => $country) {
                                 ?>
-                                <option value="<?php echo $country['id']; ?>" <?php if ($form_country == $country['id']) {
+                            <option value="<?php echo $country['id']; ?>" <?php if ($form_country == $country['id']) {
                                        echo "selected";
                                    } ?>>
-                                    <?php echo $country['name']; ?>
-                                </option>
-                                <?php
+                                <?php echo $country['name']; ?>
+                            </option>
+                            <?php
                             }
                             ?>
                         </select>
@@ -329,13 +328,13 @@ if (isset($_POST['submit']) && $_POST['form-sub'] == 1) {
 </div>
 <?php require('template/footer_temp.php') ?>
 <script>
-    $(function () {
+$(function() {
 
-        $("#date_of_birth").datepicker({
-            maxDate: 0,
-            changeMonth: true,
-            changeYear: true,
-            dateFormat: "yy-mm-dd",
-        });
+    $("#date_of_birth").datepicker({
+        maxDate: 0,
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "yy-mm-dd",
     });
+});
 </script>
